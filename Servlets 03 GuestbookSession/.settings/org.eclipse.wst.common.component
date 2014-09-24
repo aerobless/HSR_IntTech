@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Servlets 03 GuestbookSession">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="Servlets_03_GuestbookSession_Ausgangslage_neu"/>
+        <property name="java-output-path" value="/Servlets 03 GuestbookSession/build/classes"/>
+    </wb-module>
+</project-modules>

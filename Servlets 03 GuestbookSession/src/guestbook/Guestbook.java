@@ -1,13 +1,18 @@
 package guestbook;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 
 public class Guestbook {
 
 	protected Vector<GuestbookEntry> entries = new Vector<GuestbookEntry>();
 
-	protected String guestbookFilename = "/Users/hansrudin/Temp/guestbook.ser"; // auf Windows "c:\\temp\\guestbook.ser"
+	protected String guestbookFilename = "/Users/theowinter/test/test2.ser"; // auf Windows "c:\\temp\\guestbook.ser"
 
 	protected File guestbookFile;
 

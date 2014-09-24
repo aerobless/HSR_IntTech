@@ -1,12 +1,16 @@
 package guestbook;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Hashtable;
 
 public class UserManager {
 	protected Hashtable<String, User> users = new Hashtable<String, User>();
 
-	protected String userFilename = "/Users/hansrudin/Temp/users.ser"; // auf Windows "c:\\temp\\users.ser"
+	protected String userFilename = "/Users/theowinter/test/users.ser"; // auf Windows "c:\\temp\\users.ser"
 
 	protected File userFile;
 

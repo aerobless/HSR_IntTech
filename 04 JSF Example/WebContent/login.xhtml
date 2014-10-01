@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>JSF Example - Login Page</title>
 </head>
 <body>
 
@@ -12,9 +12,7 @@
 		<h:panelGrid border="1" columns="2">
 			<h:outputText value="Name"></h:outputText>
 			<h:inputText value="#{loginBean.name}"></h:inputText>
-			
 			<h:outputText value="Password"></h:outputText>
-			
 			<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
 		</h:panelGrid>
 		<h:commandButton value="Login" action="login"></h:commandButton>

@@ -52,6 +52,9 @@ var render = function () {
     "use strict";
     requestAnimationFrame(render);
 
+    //Auto-Resize the rendered window:
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
 

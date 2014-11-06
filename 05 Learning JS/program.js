@@ -6,8 +6,8 @@
 
 var test = "test";
 
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+var scene = new THREE.Scene(),
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 var renderer;
 
@@ -15,16 +15,15 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-
-var material = new THREE.MeshBasicMaterial({color: 0xbf0 });
-var greenMaterial = new THREE.MeshBasicMaterial({color: 0x00ff1e });
+var geometry = new THREE.BoxGeometry(1, 1, 1),
+    material = new THREE.MeshBasicMaterial({color: 0xbf0 }),
+    greenMaterial = new THREE.MeshBasicMaterial({color: 0x00ff1e });
 
 var cube = new THREE.Mesh(geometry, material);
 cube.position.set(0, 0, 0);
 
 var makeGreenCube = function (posX, posY, posZ) {
-    "use strict";
+    "use strict"; //All JS5.1 functions need this to make sure that we're only using initialized variables..
     var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5),
         cube = new THREE.Mesh(geometry, greenMaterial); //L: only one var!
 
@@ -55,20 +54,10 @@ var render = function () {
     //Auto-Resize the rendered window:
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
-    greenCube1.rotation.x += 0.2;
-    greenCube1.rotation.y += 0.2;
-
-    greenCube2.rotation.x += 0.2;
-    greenCube2.rotation.y += 0.2;
-
-    greenCube3.rotation.x += 0.2;
-    greenCube3.rotation.y += 0.2;
-
-    greenCube4.rotation.x += 0.2;
-    greenCube4.rotation.y += 0.2;
+    cubes.forEach(function (entry) {
+        entry.rotation.x += 0.01;
+        entry.rotation.y += 0.01;
+    });
 
     renderer.render(scene, camera);
 };

@@ -7,6 +7,7 @@
 var test = "test";
 
 var scene = new THREE.Scene(),
+    xcar = "ddd",
     camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 var renderer;

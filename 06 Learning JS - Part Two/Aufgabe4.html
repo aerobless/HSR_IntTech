@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        s1="s1";
+        String.prototype.triple = function() {
+            return this+" "+this+" "+this;
+        };
+
+        function test () {
+            s2 = "s2";
+            document.getElementById("output").firstChild.nodeValue=
+                    s1.triple()+" "+s1+" "+s2.triple();
+        }
+        window.onload = function() {
+            test();
+            //Results in: s1 s1 s1 s1 s2 s2 s2
+        }
+
+    </script>
+</head>
+<body>
+<p id="output">.</p>
+</body>
+</html>

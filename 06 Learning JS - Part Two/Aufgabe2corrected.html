@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+                           "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Aufgabe</title>
+<script type="text/javascript">
+"use strict";
+function say(text, count) {
+    var text2 = "",
+        i = 0;
+    for (i = 0; i < count; i++) {
+        text2 = text2 + " " + text;
+    }
+    alert("I say " + text2);
+}
+
+function say(text) {
+    alert("I say " + text);
+}
+
+function test() {
+    say("hi", 3);
+}
+
+window.onload =
+    function () {
+	    document.getElementById('theButton').onclick = test;
+    };
+</script>
+</head>
+<body>
+<button id="theButton">Click me</button>
+</body>
+</html>

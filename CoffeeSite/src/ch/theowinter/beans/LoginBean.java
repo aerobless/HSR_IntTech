@@ -1,14 +1,16 @@
 package ch.theowinter.beans;
-
 import java.util.Map;
-
 import ch.theowinter.data.Member;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /*
  * This is the LoginBean of CoffeeSite, a rough representation of
  * the IntTe exam of FS2014.
  */
 
+@ManagedBean
+@SessionScoped
 public class LoginBean {
 	private String username;
 	private String password;

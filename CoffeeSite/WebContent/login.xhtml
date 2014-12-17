@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Generic Login Site</title>
+</h:head>
+<body>
+	<h:form>
+		<h:panelGrid id="grid" columns="3">
+			<h:outputLabel value="Username: " for="username"></h:outputLabel>
+			<h:inputText id="username" value="#{login.username}"></h:inputText>
+			<h:message for="username"></h:message>
+			
+			<h:outputLabel value="Password: " for="password"></h:outputLabel>
+			<h:inputSecret id="password" value="#{login.password}"></h:inputSecret>
+			<h:message for="password"></h:message>
+		</h:panelGrid>
+		<h:commandButton action="#{login.login}" value="Login"></h:commandButton>
+		<h:messages></h:messages>
+	</h:form>
+</body>
+</html>

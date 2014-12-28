@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>TinyForum</display-name>
+  <welcome-file-list>
+    <welcome-file>diskussionsforum</welcome-file>
+  </welcome-file-list>
+  <servlet>
+      <servlet-name>forum</servlet-name>
+      <servlet-class>ForumServlet</servlet-class>
+      <init-param>
+          <param-name>Thema 1</param-name>
+          <param-value>Politik</param-value>
+      </init-param>
+      <init-param>
+          <param-name>Thema 2</param-name>
+          <param-value>Sport</param-value>
+      </init-param>
+      <init-param>
+          <param-name>Thema 3</param-name>
+          <param-value>Freizeit</param-value>
+      </init-param>
+  </servlet>
+  <servlet>
+      <servlet-name>anmeldung</servlet-name>
+      <servlet-class>AnmeldungServlet</servlet-class>
+  </servlet>
+  <servlet>
+      <servlet-name>thema</servlet-name>
+      <servlet-class>ThemaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <!-- nicht diskussionsforum ?? -->
+      <servlet-name>forum</servlet-name>
+      <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>anmeldung</servlet-name>
+      <url-pattern>/anmeldung</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>thema</servlet-name>
+      <url-pattern>/thema</url-pattern>
+  </servlet-mapping>
+</web-app>

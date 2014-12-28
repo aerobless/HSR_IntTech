@@ -3,7 +3,6 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Vector;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +24,9 @@ public class ForumServlet extends HttpServlet {
 				String thema = getInitParameter(initParameterName);
 				themen.add(thema);
 				Vector kommentare = new Vector();
+				
+				//Kommentare werden global im ServletContext gespeichert.
+				//d.h. alle Sessions haben darauf Zugriff.
 				getServletContext().setAttribute(thema, kommentare);
 			}
 		}
@@ -38,6 +40,7 @@ public class ForumServlet extends HttpServlet {
 		
 		for(Object thema : themen){
 			out.println("<a href="
+					//Das Thema in der URL setzen ?thema="Politik"
 					+"/TinyForum/anmeldung?thema="+thema
 					+">"+thema+"</a><br>");
 		}

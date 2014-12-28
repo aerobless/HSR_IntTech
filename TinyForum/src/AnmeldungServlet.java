@@ -18,16 +18,19 @@ public class AnmeldungServlet extends HttpServlet{
 		String thema = request.getParameter("thema");
 		Cookie[] cookies = request.getCookies();
 		
+		//Über alle Cookies iterieren
 		if(cookies != null){
 			for(int i = 0; i<cookies.length; i++){
+				//Ein Cookie finden dass den Benutzernamen enthält
 				if(cookies[i].getName().equals("name")){
+					//Den Wert des Benutzernamen aus dem Cookie auslesen
 					name = cookies[i].getValue();
 					break;
 				}
 			}
 		}
 		
-		//überprüfen
+		//Das Thema wird als Session Attribut gesetzt.
 		session.setAttribute("thema", thema);
 		
 		response.setContentType("text/html");
@@ -40,7 +43,6 @@ public class AnmeldungServlet extends HttpServlet{
 		out.println("<form action=/TinyForum/thema method=GET>"
 				+ "Name:&nbsp;<input type=text size=10 name=name value="
 				+ name+"><input type=submit value=anmelden></form>");
-
 		out.println("</body></html>");
 		out.close();
 	}

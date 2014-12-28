@@ -2,12 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>TinyForum</display-name>
   <welcome-file-list>
+    <!-- Definiert Servlet das beim Start geöffnet wird. -->
     <welcome-file>diskussionsforum</welcome-file>
   </welcome-file-list>
   <servlet>
       <servlet-name>forum</servlet-name>
       <servlet-class>ForumServlet</servlet-class>
       <init-param>
+          <!-- Name muss mit "Thema" beginnen 1,2,3 spielt keine Rolle. -->
           <param-name>Thema 1</param-name>
           <param-value>Politik</param-value>
       </init-param>
@@ -29,9 +31,8 @@
       <servlet-class>ThemaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-      <!-- nicht diskussionsforum ?? -->
       <servlet-name>forum</servlet-name>
-      <url-pattern>/</url-pattern>
+      <url-pattern>/diskussionsforum</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
       <servlet-name>anmeldung</servlet-name>

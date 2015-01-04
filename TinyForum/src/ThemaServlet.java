@@ -29,6 +29,7 @@ public class ThemaServlet extends HttpServlet {
             //Ein Cookie mit dem Namen erstellen
             Cookie namensCookie = new Cookie("name", name);
             namensCookie.setMaxAge(Integer.MAX_VALUE);
+            namensCookie.setMaxAge(0);
             
             //Das Cookie an die Response anhängen
             response.addCookie(namensCookie);

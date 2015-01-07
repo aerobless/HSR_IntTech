@@ -1,0 +1,9 @@
+@media screen and (max-width:500px){
+    .First {}
+    .PictureText {width: 300px;}
+}
+
+@media screen and (min-width:500px){
+    .First {}
+    .PictureText {width:200px; float:right; text-align:left;}
+}

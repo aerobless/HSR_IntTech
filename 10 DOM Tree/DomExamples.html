@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p id="nodeID" title="oldValue"></p>
+
+    <script>
+        //DOM Beispiel für IntTech:
+        //Achtung: Es wird davon ausgegangen das Whitespaces wie z.B.
+        // \n vom Browser nicht mitgezählt sondern ignoriert werden.
+        //Bei Chrome stimmt das zwar nicht, aber diese Beispiele hier sind gem
+        //den Folien von Herr Stolze. D.h. es ist nicht möglich diesen Code auszutesten.
+
+        /*HTML:
+        <body>
+            <p>
+                This is a
+                <b>paragraph</b>
+            </p>
+        </body>*/
+
+        //Zugriff auf Body-Tag
+        document.body; /*oder*/ document.childNodes[1].childNodes[1];
+
+        //Zugriff auf p-Tag
+        document.body.firstChild; /*oder*/ document.body.childNodes[0];
+
+        /*HTML:
+        <body>
+            <p>A paragraph</p> //ACHTUNG NEWLINE
+            <p>Another paragraph</p> //ACHTUNG NEWLINE
+        </body>*/
+
+        //Zugriff auf Nachbarknoten
+        document.body.firstChild.nextSibling /*oder*/ document.body.lastChild.previousSibling
+
+        //ab hier hab ich es aufgegeben den HTML Code abzutippen. Siehe Folien.
+
+        //Zugriff auf einen bestimmten Tag
+        document.getElementsByTagName('p')[0]; /*oder*/ document.body.getElementsByTagName('p')[0];
+
+        //Zugriff via ID
+        /*<body>
+            <p id="nodeID">Test</p>
+          </body>*/
+        document.getElementById('nodeID').firstChild;
+
+        //DOM-Knoten Ändern
+        document.getElementById('nodeID').firstChild.nodeValue='new value';
+
+        //DOM-Knoten Anhängen (nach)
+        var ourNewNode = document.createElement('p');
+        document.getElementById('nodeID').appendChild(ourNewNode);
+
+        //DOM-Knoten Einfügen (vor)
+        var ourNewNode = document.createElement('p');
+        var div =  document.getElementById('nodeID');
+        div.insertBefore(ourNewNode, div.firstChild);
+
+        //DOM-Knoten Entfernen
+        var node = document.getElementById("nodeID");
+        node.removeChild(node.childNodes[0]);
+
+        //Text-Node Einfügen
+        var newText = document.createTextNode('new text node');
+        document.getElementById('nodeID').appendChild(newText);
+
+        //Zugriff auf Attribute
+        document.getElementById('nodeID').getAttribute('title');
+        document.getElementById('nodeID').setAttribute('title', 'newValue');
+
+        var p = document.getElementById('nodeID');
+        p.title = "otherNewValue";
+
+        //InnerHTML
+        var markup = document.getElementById("nodeID").innerHTML;
+        //markup enthält jetzt den ganzen HTML Inhalt von diesem Node
+        //z.B. <p>Some <em>text</em></p>
+        document.getElementById("someOtherNodeID").innerHTML = markup;
+
+    </script>
+
+    <input type="text" onblur="myFunction()">
+
+    <a href="somewhere.html" onclick="alert('Hello World!')">...</a>
+</body>
+</html>

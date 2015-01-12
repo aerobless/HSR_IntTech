@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JavaScript Registration</title>
+</head>
+<body>
+<h1>Demo JavaScript Registration Form</h1>
+<h1>Please provide your contact information</h1>
+<form id="form"  action="success.html">
+    <div>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" value="" />
+        <span id="name-message" style="color:red"><!-- message goes here --></span>
+    </div>
+    <div>
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" value="" />
+        <span id="email-message" style="color:red"><!-- message goes here --></span>
+    </div>
+    <div>
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender"  >
+            <option value ="" selected>Please Select</option>
+            <option value ="male"> Male </option>
+            <option value ="female"> Female </option>
+        </select>
+        <span id="gender-message" style="color:red"><!-- message goes here --></span>
+    </div>
+    <div>
+        <input type="submit" value="Submit" id="submit" />
+    </div>
+</form>
+<script type="text/javascript">
+    window.onload = function() {
+        var form = document.getElementById("form");
+        var nameMessageShowing = false;
+        var eMailMessageShowing = false;
+        var gendernMessageShowing = false;
+
+        function showMessage(messageElementID, messageText) {
+            var messageElement = document.getElementById(messageElementID);
+            messageElement.textContent = messageText;
+        }
+
+        function checkName() {
+            var name = form.name.value;
+            if (name == "") {
+                showMessage('name-message',
+                        'Please provide a non-empty name.');
+                nameMessageShowing = true;
+            } else {
+                showMessage('name-message', '');
+                nameMessageShowing = false;
+            }
+        }
+
+        function checkEMail() {
+            var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            var email = form.email.value;
+            if (email == "") {
+                showMessage('email-message',
+                        'Please provide a proper email address.');
+                eMailMessageShowing = true;
+            } else {
+                if (!email.match(emailRegex)) {
+                    showMessage('email-message',
+                            'Please provide a proper email address.');
+                    eMailMessageShowing = true;
+                } else {
+                    showMessage('email-message', '');
+                    eMailMessageShowing = false;
+                }
+            }
+        }
+
+        function checkGender() {
+            var gender = form.gender.value;
+            if (gender == "") {
+                showMessage('gender-message',
+                        'Please select your gender.');
+                gendernMessageShowing = true;
+            } else {
+                showMessage('gender-message', '');
+                gendernMessageShowing = false;
+            }
+
+        }
+
+        var nameElement = document.getElementById("name");
+        nameElement.onkeyup = function() {
+            if (nameMessageShowing) {
+                checkName();
+            }
+        }
+        nameElement.onblur = function() {
+            checkName();
+        }
+
+        var emailElement = document.getElementById("email");
+        emailElement.onkeyup = function() {
+            if (eMailMessageShowing) {
+                checkEMail();
+            }
+        }
+        emailElement.onblur = function() {
+            checkEMail();
+        }
+
+        var genderElement = document.getElementById("gender");
+        genderElement.onchange = function() {
+            checkGender();
+        }
+        form.onsubmit = function() {
+            checkName();
+            checkEMail();
+            checkGender();
+            var messageShowing = (nameMessageShowing
+            || eMailMessageShowing || gendernMessageShowing)
+            return (!messageShowing);
+        }
+    }
+</script>
+</body>
+</html>

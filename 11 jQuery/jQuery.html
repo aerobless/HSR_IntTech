@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery Examples</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        (function($){ //jQuery Scope
+            //Aktionen nachdem das Dokument geladen ist.
+            $(function() {
+                //Ab hier kann man selbst coden.
+                $("p").click(function(){
+                    $(this).hide();
+                });
+
+                //Attribute Zugriff
+                $('#check1').attr('checked','unchecked'); //WRITE
+                alert($('#check1').attr('checked')); //Attribute RETURN--> checked
+
+                //Property:
+                alert($('#check1').prop('checked')); //Property ist dynamisch RETURN--> true
+
+                //HTML Content:
+                $('#foo').html();
+                $('#foo').html("<p>Hello World</p>");
+
+                //Text Value:
+                $('#foo').text("Hello there");
+
+                //Value (für Form-Elemente):
+                $('#foo').val();
+            })
+        })(jQuery);
+    </script>
+</head>
+<body>
+    <p id="hi">Hello World!</p>
+    <input id="check1" type="checkbox">
+</body>
+</html>

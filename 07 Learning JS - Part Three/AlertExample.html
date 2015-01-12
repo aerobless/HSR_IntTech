@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function checkBoolInterpretation(val){
+        alert("Debug-Info:\nValue: "+val);
+        if(val) {return 't'} else {return 'f'};
+    };
+    //String => true
+    alert(checkBoolInterpretation('dddd'));
+
+    //'5'*'' => 0, 0 ist falsy
+    alert(checkBoolInterpretation('5'*''));
+
+    //Die Variable ist leer => d.h. undefined => falsy
+    alert(checkBoolInterpretation());
+
+    //String evaluiert zu true
+    alert('false'==true);
+
+    //window.x ist undefined => undefined + nummer geht nicht => NaN
+    alert(window.x+7);
+
+    function Square (initLength){this.length=initLength};
+    Square.prototype.area = function() {return this.length * this.length;}
+    Square.prototype.color = 'blue';
+    s = new Square(5);
+
+    //Wendet Funktion area() von Square an, ganz normal => 25
+    alert(s.area());
+
+    s2 = s;
+    s3 = new Square(10);
+    s4 = Square(20); //Achtung: kein new!
+
+    //Ganz normal => blue
+    alert(s.color);
+
+    //Wie erwartet => red
+    s.color = 'red';
+    alert(s.color);
+
+    //Rot weil Referenz auf s
+    alert(s2.color);
+
+    //Anderes Objekt als s/s2, Farbe kommt vom Prototyp => blau
+    alert(s3.color);
+
+    areaFn = Square.prototype.area;
+    //Funktionsaufruf: 20*20 => 400
+    alert(areaFn());
+
+    //Die Funktion wird für alle Squares geändert.
+    Square.prototype.area = function() {return 17;}
+    alert(s.area());
+
+    Square.prototype.color = "grün";
+    //Beim Prototyp wird die Farbe auf "grün" geändert.
+    //S hat aber bereits eine eigene Farbe "rot" und diese beleibt so => rot.
+    alert(s.color);
+
+    //s3 hat keine Eigene Farbe und nimmmt die vom Prototyp => grün
+    alert(s3.color);
+
+    s5={length:7, color:'cyan', area:areaFn};
+    //s5 hat die areaFn und ein property lenght, d.h. ganz normal => 49
+    alert(s5.area());
+
+    //S4 wird ohne "new" erstellt, d.h. s4 ist das originale Square Objekt ohne area funktion
+    //d.h. es kommt zum JS Error: "Cannot read property 'area' of undefined"
+    alert(s4.area());
+</script>
+</body>
+</html>

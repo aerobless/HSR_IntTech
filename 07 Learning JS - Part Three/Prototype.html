@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    var test = function () {
+        alert("Hello World");
+    };
+
+    test(); // --> Hello World
+
+    test.prototype.dude = function () {
+        alert("DUUUUDE");
+    };
+
+    //test.dude(); //--> Error weil Undefined
+
+    test2 = new test(); // --> Hello World
+    test2.dude(); // --> DUUUDE
+
+    alert(typeof test); //--> function
+    alert(typeof test2); //-->object
+
+    function Box(col)
+    {
+        var color = col;
+
+        this.getColor = function()
+        {
+            return color;
+        }
+    }
+
+    var blueBox = new Box("blue");
+    blueBox.color = 3; //Wirft kein Fehler, aber hat kein Effekt
+    alert(blueBox.getColor()); // --> blue
+
+    var greenBox = new Box("green");
+    alert(greenBox.getColor()); // --> green
+
+</script>
+</body>
+</html>

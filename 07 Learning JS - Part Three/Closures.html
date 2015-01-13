@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+
+    //Closure Example
+    var makeAdder = function (a) {
+        return function(b){
+            ++a;
+            return a+b;
+        };
+    };
+
+    var myAdder = makeAdder(2);
+    alert(myAdder(3));
+    alert(myAdder(3));
+    alert(myAdder(4));
+
+</script>
+
+</body>
+</html>

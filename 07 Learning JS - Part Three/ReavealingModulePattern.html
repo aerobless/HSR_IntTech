@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var moduleName = function() {
+        function privateFunction() {
+            alert("I'm private");
+        };
+        function publicFunction() {
+            privateFunction();
+            alert("I'm public");
+        };
+        return {
+            publicFunction: publicFunction
+        };
+    }();
+    //Zugriff:
+    moduleName.publicFunction();
+
+    function getJS(file) {
+        var script = document.createElement('script');
+        script.src = file;
+        script.type = 'text/javascript';
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
+    }
+
+</script>
+</body>
+</html>

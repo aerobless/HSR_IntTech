@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function PrivateCounter(counterStart, step){
+        if(this===window){
+            //Wird ausgeführt wenn ohne "new" aufgerufen
+            return new Counter(counterStart, step);
+        }
+        var count = counterStart //Private
+        var step = step || 1; //Private
+
+        this.incCount = function () {
+            count = count + step;
+        }
+
+        this.getCount = function () {
+            return count;
+        }
+    }
+
+    function PublicCounter(counterStart, step){
+        if(this===window){
+            //Wird ausgeführt wenn ohne "new" aufgerufen
+            return new Counter(counterStart, step);
+        }
+        this.count = counterStart //Public
+        this.step = step || 1; //Public
+    }
+    PublicCounter.prototype.incCount = function () {
+        this.count = this.count + this.step;
+    }
+    PublicCounter.prototype.getCount = function () {
+        return this.count;
+    }
+
+    myCounter = new PublicCounter(1, 2);
+    myCounter.incCount();
+    myCounter.incCount();
+    myCounter.getCount(); //--> 5
+
+    myOtherCounter = new PublicCounter(10);
+    myOtherCounter.incCount();
+    myOtherCounter.incCount();
+    myOtherCounter.getCount(); //--> 12
+
+    var someOtherCounter = PublicCounter(100, 2);
+    someOtherCounter.incCount();
+    someOtherCounter.getCount(); //--> 102
+
+    console.log(myCounter instanceof PublicCounter); //true
+    console.log(someOtherCounter instanceof PublicCounter); //true
+</script>
+</body>
+</html>

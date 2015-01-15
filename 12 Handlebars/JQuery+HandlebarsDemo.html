@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<script language="javascript"
+ 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js">
+ 		</script>
+ 		<script language="javascript"
+ 			src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js">
+ 		</script>
+		<!--Template:-->
+		<script id='customerTemplateText' type='text/x-handlebars-template'>
+			<h2>New Customers</h2>
+			<ul>
+			 {{#each customers}} 
+			   <li> {{ firstName }} {{ lastName }} </li>
+			 {{/each}}
+			</ul>
+		</script>
+	</head>
+	<body>
+		<h1>JQuery Ajax + Handlebars Demo</h1>
+		<button id='button1'>Click to Show new Customer Data</button>
+		<script language="javascript">
+			//jQuery Scope
+			(function($) { $(function() {
+				var countryTemplateScript = $('#countryTemplate').html();
+				var customerData = {customers:
+								[{firstName:'Peter', lastName: 'Pan', age:13}, 
+								{firstName:'Captain', lastName:'Hook', age:35}]}
+				var customerTemplateText = $('#customerTemplateText').html();
+				//1. Compile Template
+				var customerTemplate = Handlebars.compile (customerTemplateText);
+				var renderData = function () {
+					//2. Render Template mit Customer Data (append an body)
+					$(document.body).append (customerTemplate (customerData));
+				}
+				//Button Handler
+				$('#button1').click(renderData);
+			 });
+			 })(jQuery);
+ 		</script>
+		<!--gerendertes Template wird hier eingefügt.-->
+ 	</body>
+ </html>
+ 
+ 

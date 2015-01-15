@@ -15,10 +15,10 @@
 
                 //Attribute Zugriff
                 $('#check1').attr('checked','unchecked'); //WRITE
-                alert($('#check1').attr('checked')); //Attribute RETURN--> checked
+                //alert($('#check1').attr('checked')); //Attribute RETURN--> checked
 
                 //Property:
-                alert($('#check1').prop('checked')); //Property ist dynamisch RETURN--> true
+                //alert($('#check1').prop('checked')); //Property ist dynamisch RETURN--> true
 
                 //HTML Content:
                 $('#foo').html();
@@ -29,6 +29,12 @@
 
                 //Value (für Form-Elemente):
                 $('#foo').val();
+
+                //Kind selektieren: (gibt mehrere Kinder aneinander zurück)
+                alert($('table > tbody > tr').html());
+
+                //Parent Descendant
+                alert($('tr td').text());
             })
         })(jQuery);
     </script>
@@ -36,5 +42,18 @@
 <body>
     <p id="hi">Hello World!</p>
     <input id="check1" type="checkbox">
+
+
+    <table>
+        <tr>
+            ddd
+            <th>ddd</th>
+            <th>ddd</th>
+        </tr>
+        <tr>
+            <td>lll</td>
+            <td>bbb</td>
+        </tr>
+    </table>
 </body>
 </html>

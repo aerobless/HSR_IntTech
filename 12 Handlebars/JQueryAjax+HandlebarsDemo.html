@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<script language="javascript"
+ 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js">
+ 		</script>
+ 		<script language="javascript"
+ 			src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js">
+ 		</script>
+	</head>
+	<body>
+		<h1>Ajax + Handlebars Demo</h1>
+		<button id='button1'>Click to Show new Country Data</button>
+		<!--Template:-->
+		<script id='countryTemplateText' type='text/x-handlebars-template'>
+			<h2>Continents</h2>
+ 			{{#each place}}
+   				<li> Continent {{ name }}  </li>
+ 			{{/each}}
+		</script>
+		<script language="javascript">
+			(function($) { $(function() {
+				var countryTemplateText = $('#countryTemplateText').html();
+				//1. Compile Template
+				var countryTemplate = Handlebars.compile (countryTemplateText);
+				var getAndRenderData = function () {
+					 $.ajax({
+						url: "http://query.yahooapis.com/v1/public/yql",
+						jsonp: "callback",  // the name of the callback parameter, as specified by the YQL service
+						dataType: "jsonp",  // tell jQuery we're expecting JSONP
+						data: {
+							q: "select * from geo.continents",
+							format: "json"
+						},  // tell YQL what we want and that we want JSON
+						success: function( response ) {
+							var results = response.query.results;
+							//2. Render Template mit Customer Data (append an body)
+							var filledTemplate = countryTemplate (results)
+							$(document.body).append (filledTemplate);
+						} 	// work with the response
+
+					});
+				}
+				$('#button1').click(getAndRenderData);
+			 });
+			 })(jQuery);
+ 		</script>
+ 	</body>
+ </html>
+ 

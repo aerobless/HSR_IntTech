@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //Animal:
+    function Animal(name){
+        this.name=name;
+        this.amountOfJumps=1;
+    }
+    Animal.prototype.alive = function () {
+        console.log("A animal named "+this.name+" is alive");
+    }
+    Animal.prototype.jump = function () {
+        console.log("An animal named"+this.name+" jumps "+this.amountOfJumps+" times");
+        ++this.amountOfJumps;
+    }
+
+    //Cat:
+    Cat.prototype = new Animal(); //Vererbung passiert hier
+    Cat.prototype.constructor=Cat; //Sonst hätten Katzen den Konstruktor vom Tier
+    function Cat(name){
+        this.name=name;
+    }
+    Cat.prototype.alive = function () {
+        console.log("An cat named "+this.name+" is alive");
+    }
+
+    var myCat = new Cat("Moiraine");
+    myCat.alive(); //A cat named Moiraine is alive
+    myCat.jump(); //An animal namedMoiraine jumps 1 times
+    myCat.jump(); //An animal namedMoiraine jumps 2 times
+
+
+</script>
+</body>
+</html>
